@@ -1,3 +1,13 @@
-Todo:
+# ineedfriends instagram bot
 
-- data folder with cookies has to be moved out of the project
+## getting started
+
+
+## how to contribute
+
+- install node
+- `npm install`
+
+---
+
+_we love lowercase_

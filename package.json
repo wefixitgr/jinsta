@@ -49,7 +49,10 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.6.3",
+    "@types/inquirer": "^6.5.0",
+    "bluebird": "^3.5.4",
     "dotenv": "^8.1.0",
+    "inquirer": "^1.1.2",
     "instagram-private-api": "^1.31.0"
   }
 }

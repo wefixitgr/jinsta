@@ -33,6 +33,16 @@ const config: IConfig = {
 	cookie,
 };
 
+function removeCookie() {
+	try {
+		  fs.unlinkSync(filepath)
+		  //file removed
+		} catch(err) {
+		  console.error("can not delete file")
+		  // console.error(err)
+		}
+}
+
 function saveSession(cookie: any, seed: string) {
 	fs.writeFile(filepath, JSON.stringify({ cookie, seed }), 'utf-8', err => err ? console.error(err) : void 0);
 }
@@ -49,6 +59,7 @@ interface IConfig {
 export {
 	IConfig,
 	saveSession,
+	removeCookie,
 };
 
 export default config;

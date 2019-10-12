@@ -1,5 +1,6 @@
 import { IgApiClient } from 'instagram-private-api';
-import { IConfig, saveSession } from './config';
+import { IConfig, saveSession, removeCookie } from './config';
+import { solveChallenge } from './challenge'
 
 class session {
 	private ig: IgApiClient;
@@ -11,8 +12,11 @@ class session {
 	}
 
 	async login() {
+		removeCookie()
 		this.ig.state.generateDevice(this.config.seed);
 		this.ig.request.end$.subscribe(this.saveSession.bind(this));
+		solveChallenge(this.ig)
+		return
 
 		if (this.config.restore) {
 			await this.ig.state.deserializeCookieJar(this.config.cookie);
@@ -20,6 +24,9 @@ class session {
 		}
 
 		await this.ig.simulate.preLoginFlow();
+		console.log("moinoin")
+		console.log(this.ig.state.checkpoint)
+		console.log(this.config.username)
 		await this.ig.account.login(this.config.username, this.config.password);
 		this.ig.simulate.postLoginFlow(); // dont await here
 	}
