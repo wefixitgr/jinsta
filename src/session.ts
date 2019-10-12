@@ -24,9 +24,6 @@ class session {
 		}
 
 		await this.ig.simulate.preLoginFlow();
-		console.log("moinoin")
-		console.log(this.ig.state.checkpoint)
-		console.log(this.config.username)
 		await this.ig.account.login(this.config.username, this.config.password);
 		this.ig.simulate.postLoginFlow(); // dont await here
 	}
